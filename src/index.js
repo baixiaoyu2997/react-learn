@@ -1,18 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Counter from "./Counter";
-import { createStore } from 'redux'
-const store = createStore();
+import store from "./store";
+import { Provider } from "react-redux";
+import TodoFooter from "./components/TodoFooter";
+import TodoHeader from "./components/TodoHeader";
+import TodoList from "./components/TodoList";
+
 class App extends React.Component {
-  componentDidMount(){
-   
-  }
+  componentDidMount() {}
   render(h) {
     return (
-      <React.Fragment>
-       <Counter></Counter>
-      </React.Fragment>
+      <Provider store={store}>
+        <TodoHeader></TodoHeader>
+        <TodoList></TodoList>
+        <TodoFooter></TodoFooter>
+      </Provider>
     );
   }
 }
-ReactDOM.render(<App/>, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
